@@ -13,11 +13,11 @@
 
 ### Nuget
 
-```Install-Package <coming soon>```
+```Install-Package AspNetOptionsExplorer -pre```
 
 ### dotnet CLI
 
-`dotnet add package <coming soon>`
+`dotnet add package AspNetOptionsExplorer`
 
 
 ## Configuration
