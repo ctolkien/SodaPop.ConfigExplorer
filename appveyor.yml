@@ -16,7 +16,7 @@ before_test:
 - cmd: choco install opencover.portable
 test_script:
 - cmd: pushd
-- cmd: cd .\tests\AspNetOptionsExplorer.Tests\ 
+- cmd: cd .\tests\
 - cmd: opencover.console -target:"dotnet.exe" -targetargs:"test -c %CONFIGURATION% --no-build" -register:user -filter:"+[*]* -[xunit*]*" -output:"../../coverage.xml" -log:All -oldstyle -skipautoprops
 after_test:
 - "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
