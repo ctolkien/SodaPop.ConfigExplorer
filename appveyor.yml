@@ -3,6 +3,8 @@ version: 1.0.{build}
 configuration: Release
 pull_requests:
   do_not_increment_build_number: true
+environment:
+  ASPNETCORE_ENVIRONMENT: Development
 build:
   verbosity: minimal
   publish_nuget: true
@@ -13,16 +15,17 @@ build_script:
 artifacts:
 - path: .\src\artifacts\**\*.*
 before_test:
-- cmd: choco install opencover.portable
+#- cmd: choco install opencover.portable
 test_script:
-- cmd: pushd
-- cmd: cd .\tests\
-- cmd: opencover.console -target:"dotnet.exe" -targetargs:"test -c %CONFIGURATION% --no-build" -register:user -filter:"+[*]* -[xunit*]*" -output:"../../coverage.xml" -log:All -oldstyle -skipautoprops
-after_test:
-- "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
-- pip install codecov
-- cd ../..
-- codecov -f "coverage.xml" -X gcov
+- dotnet test .\tests\AspNetOptionsExplorer.Tests.csproj
+#- cmd: pushd
+#- cmd: cd .\tests\
+#- cmd: opencover.console -target:"dotnet.exe" -targetargs:"test -c %CONFIGURATION% --no-build" -register:user -filter:"+[*]* -[xunit*]*" -output:"../../coverage.xml" -log:All -oldstyle -skipautoprops
+#after_test:
+#- "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
+#- pip install codecov
+#- cd ../..
+#- codecov -f "coverage.xml" -X gcov
 deploy:
 - provider: NuGet
   api_key:

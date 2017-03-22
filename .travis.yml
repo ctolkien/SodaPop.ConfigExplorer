@@ -2,6 +2,8 @@ language: csharp
 dist: trusty
 notifications:
   email: never
+env:
+- ASPNETCORE_ENVIRONMENT=Development
 mono: none
 dotnet: 1.0.1
 script:
