@@ -11,7 +11,7 @@ build_script:
 - dotnet build -c %CONFIGURATION%
 - dotnet pack -c %CONFIGURATION% .\src\AspNetOptionsExplorer.csproj -o .\artifacts 
 artifacts:
-- path: .\src\AspNetOptionsExplorer\artifacts\**\*.*
+- path: .\src\artifacts\**\*.*
 before_test:
 - cmd: choco install opencover.portable
 test_script:
