@@ -31,7 +31,7 @@ if (env.IsDevelopment)
 }
 ```
 
-Once configured access your site via:
+Once configured access a diagnostic listing all the available keys and values in the configuration system via:
 
 ```
 http://localhost:port/options
