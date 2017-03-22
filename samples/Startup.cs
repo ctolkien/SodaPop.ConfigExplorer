@@ -28,10 +28,10 @@ namespace AspNetOptionsExplorer.Sample
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                app.UseAspNetOptionsExplorer(config);
+                
             }
-
-            app.UseAspNetOptionsExplorer(config);
-
 
             app.Run(async (context) =>
             {
