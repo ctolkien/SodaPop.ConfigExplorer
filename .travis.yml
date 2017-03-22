@@ -6,5 +6,5 @@ mono: none
 dotnet: 1.0.1
 script:
   - dotnet restore -v Minimal
-  - dotnet build src/AspNetOptionsExplorer/AspNetOptionsExplorer.csproj -c Release 
+  - dotnet build src/AspNetOptionsExplorer.csproj -c Release 
   - dotnet test tests/AspNetOptionsExplorer.Tests.csproj
