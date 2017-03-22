@@ -4,7 +4,7 @@ VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetOptionsExplorer", "src\AspNetOptionsExplorer.csproj", "{DF8EEA99-8FFA-42D0-820F-EE06BFFFC28C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetOptionsExplorer.Tests", "test\AspNetOptionsExplorer.Tests.csproj", "{AA8CF925-9336-49DD-9B1A-0243C7DA51E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetOptionsExplorer.Tests", "tests\AspNetOptionsExplorer.Tests.csproj", "{AA8CF925-9336-49DD-9B1A-0243C7DA51E4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetOptionsExplorer.Sample", "samples\AspNetOptionsExplorer.Sample.csproj", "{DF570E5D-20D7-4AAC-95E8-964F57841563}"
 EndProject
