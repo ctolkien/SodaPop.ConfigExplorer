@@ -29,10 +29,7 @@ namespace AspNetOptionsExplorer.Tests
             var responseString = await response.Content.ReadAsStringAsync();
 
             // Assert
-            Assert.Equal(
-@"Key: 'Tier1:Tier2:Tier3:Level3Option', Value: 'And it's value' 
-Key: 'Tier1:SomeKey', Value: 'Some Value' 
-",
+            Assert.Equal($"Key: 'Tier1:Tier2:Tier3:Level3Option', Value: 'And it's value' {Environment.NewLine}Key: 'Tier1:SomeKey', Value: 'Some Value' {Environment.NewLine}",
                 responseString);
         }
     }
