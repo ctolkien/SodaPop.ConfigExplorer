@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Http;
 
 namespace AspNetOptionsExplorer
 {
@@ -9,15 +10,30 @@ namespace AspNetOptionsExplorer
         public static IApplicationBuilder UseAspNetOptionsExplorer(
             this IApplicationBuilder builder,
             IConfigurationRoot configRoot,
-            string pathMatch = "/options")
+            AspNetOptionsExplorerOptions options = null)
         {
 
-            return builder.MapWhen(x =>
+            options = options ?? new AspNetOptionsExplorerOptions();
+
+            return builder.MapWhen(context =>
             {
-                return x.Request.Path.Equals(pathMatch) && x.Request.Host.Host == "localhost";
-            }, x => x.UseMiddleware<AspNetOptionsExplorerMiddleware>(configRoot));
+                return context.IsValid(options);
+            },
+                x => x.UseMiddleware<AspNetOptionsExplorerMiddleware>(configRoot));
 
+        }
 
+        //todo: make this less terribad
+        public static bool IsValid(this HttpContext context, AspNetOptionsExplorerOptions options)
+        {
+            var valid = context.Request.Path.Equals(options.PathMatch);
+
+            if (options.LocalHostOnly)
+            {
+                valid = context.Request.Host.Host.Equals("localhost");
+            }
+
+            return valid;
         }
     }
 }

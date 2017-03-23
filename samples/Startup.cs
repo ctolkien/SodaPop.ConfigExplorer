@@ -29,8 +29,11 @@ namespace AspNetOptionsExplorer.Sample
             {
                 app.UseDeveloperExceptionPage();
 
-                app.UseAspNetOptionsExplorer(config);
-                
+                app.UseAspNetOptionsExplorer(config, new AspNetOptionsExplorerOptions
+                {
+
+                });
+
             }
 
             app.Run(async (context) =>

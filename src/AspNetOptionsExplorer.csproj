@@ -16,4 +16,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.0.3" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="Dashboard\test.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
