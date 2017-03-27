@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 
+
+
 namespace AspNetOptionsExplorer.Sample
 {
     public class Startup
@@ -38,7 +40,7 @@ namespace AspNetOptionsExplorer.Sample
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                await context.Response.WriteAsync("Final Catchall");
             });
 
         }

@@ -2,33 +2,38 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using System.Linq;
 using System;
-using System.Reflection;
+using RazorLight;
+using System.Linq;
 
 namespace AspNetOptionsExplorer
 {
     public class AspNetOptionsExplorerMiddleware
     {
         private readonly IConfigurationRoot _config;
+        private readonly AspNetOptionsExplorerOptions _explorerOptions;
 
-
-        public AspNetOptionsExplorerMiddleware(RequestDelegate next, IConfigurationRoot config)
+        public AspNetOptionsExplorerMiddleware(RequestDelegate next, IConfigurationRoot config, AspNetOptionsExplorerOptions explorerOptions)
         {
             _config = config;
+            _explorerOptions = explorerOptions;
 
         }
 
         public async Task Invoke(HttpContext context)
         {
-            var options = CreateOptionList(_config.GetChildren());
+            var options = CreateOptionList(_config.GetChildren()).ToList();
 
-            await ResponseWriter(context, options);
 
-            //now lets test
-            var file = System.IO.File.ReadAllText("Dashboard/test.html");
+            var engine = EngineFactory.CreateEmbedded(typeof(AspNetOptionsExplorerMiddleware));
 
-            await context.Response.WriteAsync(file);
+
+            var result = engine.Parse("Options", options);
+
+            await context.Response.WriteAsync(result);
+
+            //await ResponseWriter(context, options);
+
         }
 
 
@@ -47,7 +52,6 @@ namespace AspNetOptionsExplorer
                 await context.Response.WriteAsync($"Path: '{item.Path}, 'Key: '{item.Key}', Value: '{item.Value}' {Environment.NewLine}");
                 await ResponseWriter(context, item.Children);
             }
-
         }
 
         /// <summary>
@@ -62,6 +66,13 @@ namespace AspNetOptionsExplorer
             {
                 var c = iter.Current;
                 var o = new Option { Path = c.Path, Key = c.Key, Value = c.Value };
+                if (_explorerOptions.TryRedactConnectionStrings)
+                {
+                    if (o.Path.Contains("Connection"))
+                    {
+                        o.Value = "REDACTED";
+                    }
+                }
                 o.Children = CreateOptionList(c.GetChildren());
                 yield return o;
             }
