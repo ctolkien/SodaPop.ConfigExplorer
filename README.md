@@ -44,7 +44,7 @@ Configuration can often contain application secrets such as connection strings. 
 
 ![Example](https://cloud.githubusercontent.com/assets/515955/24350435/ed011456-132d-11e7-857a-10a31305eb83.png)
 
-## What's It Do?
+## Whats It Do?
 
 The configuration system in AspNet Core is extremely flexible, but it sometimes can be hard to know what value you're going to receive. An example configuration might look like:
 
