@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
+using SodaPop.ConfigExplorer;
 
 
-
-namespace AspNetOptionsExplorer.Sample
+namespace SodaPop.ConfigExplorer.Sample
 {
     public class Startup
     {
@@ -31,17 +31,17 @@ namespace AspNetOptionsExplorer.Sample
             {
                 app.UseDeveloperExceptionPage();
 
-                app.UseAspNetOptionsExplorer(config, new AspNetOptionsExplorerOptions //optional
+                app.UseConfigExplorer(config, new ConfigExplorerOptions //optional
                 {
                     LocalHostOnly = true, //default
-                    PathMatch = "/options", //default
+                    PathMatch = "/config", //default
                     TryRedactConnectionStrings = true //default
                 });
             }
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Final Catchall");
+                await context.Response.WriteAsync("Hello Sample World!");
             });
 
         }

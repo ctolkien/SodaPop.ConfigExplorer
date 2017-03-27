@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <Authors>Chad Tolkien</Authors>
+    <Company>Soda Digital</Company>
+    <VersionPrefix>0.2</VersionPrefix>
+    <VersionSufix>-beta</VersionSufix>
+    <Description>Middleware for AspNet Core to diagnose what values are available from Configuration</Description>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/ctolkien/SodaPop.ConfigExplorer</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/ctolkien/SodaPop.ConfigExplorer</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/ctolkien/SodaPop.ConfigExplorer/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/ctolkien/SodaPop.ConfigExplorer/master/icon.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Layout.cshtml">
+      <CopyToOutputDirection>Always</CopyToOutputDirection>
+    </EmbeddedResource>
+    <EmbeddedResource CopyToOutputDirection="Always" Include="Configs.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.0.3" />
+    <PackageReference Include="RazorLight" Version="1.0.0-rc2" />
+  </ItemGroup>
+
+</Project>

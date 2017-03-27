@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\samples\AspNetOptionsExplorer.Sample.csproj" />
+    <ProjectReference Include="..\samples\SodaPop.ConfigExplorer.Sample.csproj" />
   </ItemGroup>
 
   <ItemGroup>

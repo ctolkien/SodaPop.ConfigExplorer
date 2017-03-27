@@ -1,16 +1,13 @@
 ﻿using System.Collections.Generic;
 
-namespace AspNetOptionsExplorer
+namespace SodaPop.ConfigExplorer
 {
-    public class Option
+    public class ConfigurationItem
     {
         public string Path { get; set; }
         public string Key { get; set; }
         public string Value { get; set; }
 
-        public IEnumerable<Option> Children { get; set; }
-
-
-
+        public IEnumerable<ConfigurationItem> Children { get; set; }
     }
 }

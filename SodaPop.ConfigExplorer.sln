@@ -2,11 +2,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetOptionsExplorer", "src\AspNetOptionsExplorer.csproj", "{DF8EEA99-8FFA-42D0-820F-EE06BFFFC28C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SodaPop.ConfigExplorer", "src\SodaPop.ConfigExplorer.csproj", "{DF8EEA99-8FFA-42D0-820F-EE06BFFFC28C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetOptionsExplorer.Tests", "tests\AspNetOptionsExplorer.Tests.csproj", "{AA8CF925-9336-49DD-9B1A-0243C7DA51E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SodaPop.ConfigExplorer.Tests", "tests\SodaPop.ConfigExplorer.Tests.csproj", "{AA8CF925-9336-49DD-9B1A-0243C7DA51E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetOptionsExplorer.Sample", "samples\AspNetOptionsExplorer.Sample.csproj", "{DF570E5D-20D7-4AAC-95E8-964F57841563}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SodaPop.ConfigExplorer.Sample", "samples\SodaPop.ConfigExplorer.Sample.csproj", "{DF570E5D-20D7-4AAC-95E8-964F57841563}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
