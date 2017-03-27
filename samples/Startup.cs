@@ -31,11 +31,12 @@ namespace AspNetOptionsExplorer.Sample
             {
                 app.UseDeveloperExceptionPage();
 
-                app.UseAspNetOptionsExplorer(config, new AspNetOptionsExplorerOptions
+                app.UseAspNetOptionsExplorer(config, new AspNetOptionsExplorerOptions //optional
                 {
-
+                    LocalHostOnly = true, //default
+                    PathMatch = "/options", //default
+                    TryRedactConnectionStrings = true //default
                 });
-
             }
 
             app.Run(async (context) =>
