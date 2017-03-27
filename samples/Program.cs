@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace AspNetOptionsExplorer.Sample
+namespace SodaPop.ConfigExplorer.Sample
 {
     public class Program
     {

@@ -1,23 +1,23 @@
-# AspNetOptionsExplorer
+# Config Explorer for ASPNet Core
 
 | Platform | Status|
 |---------|-------|
-|Windows  | [![Build status](https://img.shields.io/appveyor/ci/Soda-Digital/AspNetOptionsExplorer.svg?maxAge=2000)](https://ci.appveyor.com/project/Soda-Digital/AspNetOptionsExplorer) |
-|Linux | [![Build Status](https://img.shields.io/travis/ctolkien/AspNetOptionsExplorer.svg?maxAge=2000)](https://travis-ci.org/ctolkien/AspNetOptionsExplorer) |
+|Windows  | [![Build status](https://img.shields.io/appveyor/ci/Soda-Digital/SodaPop.ConfigExplorer.svg?maxAge=2000)](https://ci.appveyor.com/project/Soda-Digital/SodaPop.ConfigExplorer) |
+|Linux | [![Build Status](https://img.shields.io/travis/ctolkien/AspNetOptionsExplorer.svg?maxAge=2000)](https://travis-ci.org/ctolkien/SodaPop.ConfigExplorer) |
 
-[![codecov](https://codecov.io/gh/ctolkien/AspNetOptionsExplorer/branch/master/graph/badge.svg)](https://codecov.io/gh/ctolkien/AspNetOptionsExplorer)
-![Version](https://img.shields.io/nuget/v/AspNetOptionsExplorer.svg?maxAge=2000)
-[![license](https://img.shields.io/github/license/ctolkien/AspNetOptionsExplorer.svg?maxAge=2592000)]()
+[![codecov](https://codecov.io/gh/ctolkien/SodaPop.ConfigExplorer/branch/master/graph/badge.svg)](https://codecov.io/gh/ctolkien/SodaPop.ConfigExplorer)
+![Version](https://img.shields.io/nuget/v/SodaPop.ConfigExplorer.svg?maxAge=2000)
+[![license](https://img.shields.io/github/license/ctolkien/SodaPop.ConfigExplorer.svg?maxAge=2592000)]()
 
 ## Install
 
 ### Nuget
 
-```Install-Package AspNetOptionsExplorer -pre```
+```Install-Package SodaPop.ConfigExplorer -pre```
 
 ### dotnet CLI
 
-`dotnet add package AspNetOptionsExplorer`
+`dotnet add package SodaPop.ConfigExplorer`
 
 
 ## Configuration
@@ -26,20 +26,20 @@
 
 if (env.IsDevelopment)
 {
-    //config is the `IConfigurationRoot` from the `ConfigurationBuilder`
-    app.UseAspNetOptionsExplorer(config);
+    //config is the `IConfigurationRoot` from your `ConfigurationBuilder`
+    app.UseConfigExplorer(config);
 }
 ```
 
-Once configured access a diagnostic listing all the available keys and values in the configuration system via:
+Once configured, access a diagnostic listing all the available keys and values in the configuration system via:
 
 ```
-http://localhost:port/options
+http://localhost:port/config
 ```
 
 ## A Strong Warning On Security
 
-Configuration can often contain application secrets such as connection strings. As a precuationary measure the end point will only load if the host is `localhost` and we will also filter out any configuration key which has a name container `ConnectionString`. Even with these set, we strongly advise this middleware is only added in development environments.
+Configuration can often contain application secrets such as connection strings. As a precuationary measure the end point will only load if the host is `localhost` and we will also filter out any configuration key which has a name containing `ConnectionString`. Even with these set, we strongly advise this middleware is only added in development environments.
 
 ## What's It Do?
 
@@ -49,6 +49,7 @@ The configuration system in AspNet Core is extremely flexible, but it sometimes 
 var config = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
     .AddJsonFile($"appsettings.{env.EnvironmentName}.json")
+    .AddJsonFile("someotherappsetting.json", optional: true) 
     .AddInMemoryCollection()
     .Add(MyCustomSource)
     .Build();
@@ -60,5 +61,14 @@ Compounding this, there are a number of "magic" prefixes used to hook in for Azu
 
 This tool will simply list out all the availble keys and values currently available in the entire configuration system.
 
+## Availble Options
 
+```csharp
+app.UseConfigExplorer(config, new ConfigExplorerOptions //optional
+{
+    LocalHostOnly = true, //default
+    PathMatch = "/config", //default
+    TryRedactConnectionStrings = true //default
+});
+```
 
