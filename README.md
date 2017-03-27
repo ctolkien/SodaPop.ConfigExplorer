@@ -5,7 +5,7 @@
 |Windows  | [![Build status](https://img.shields.io/appveyor/ci/Soda-Digital/SodaPop-ConfigExplorer.svg?maxAge=200)](https://ci.appveyor.com/project/Soda-Digital/SodaPop.ConfigExplorer) |
 |Linux | [![Build Status](https://img.shields.io/travis/ctolkien/SodaPop.ConfigExplorer.svg?maxAge=200)](https://travis-ci.org/ctolkien/SodaPop.ConfigExplorer) |
 
-![Version](https://img.shields.io/nuget/v/SodaPop.ConfigExplorer.svg?maxAge=2000)
+![Version](https://img.shields.io/nuget/v/SodaPop.ConfigExplorer.svg?maxAge=200)
 ![license](https://img.shields.io/github/license/ctolkien/SodaPop.ConfigExplorer.svg?maxAge=2592000)
 
 ## Install
