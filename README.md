@@ -2,8 +2,8 @@
 
 | Platform | Status|
 |---------|-------|
-|Windows  | [![Build status](https://img.shields.io/appveyor/ci/Soda-Digital/SodaPop.ConfigExplorer.svg?maxAge=2000)](https://ci.appveyor.com/project/Soda-Digital/SodaPop.ConfigExplorer) |
-|Linux | [![Build Status](https://img.shields.io/travis/ctolkien/AspNetOptionsExplorer.svg?maxAge=2000)](https://travis-ci.org/ctolkien/SodaPop.ConfigExplorer) |
+|Windows  | [![Build status](https://img.shields.io/appveyor/ci/Soda-Digital/SodaPop.ConfigExplorer.svg?maxAge=200)](https://ci.appveyor.com/project/Soda-Digital/SodaPop.ConfigExplorer) |
+|Linux | [![Build Status](https://img.shields.io/travis/ctolkien/AspNetOptionsExplorer.svg?maxAge=200)](https://travis-ci.org/ctolkien/SodaPop.ConfigExplorer) |
 
 [![codecov](https://codecov.io/gh/ctolkien/SodaPop.ConfigExplorer/branch/master/graph/badge.svg)](https://codecov.io/gh/ctolkien/SodaPop.ConfigExplorer)
 ![Version](https://img.shields.io/nuget/v/SodaPop.ConfigExplorer.svg?maxAge=2000)
