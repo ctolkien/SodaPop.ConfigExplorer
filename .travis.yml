@@ -8,5 +8,5 @@ mono: none
 dotnet: 1.0.1
 script:
   - dotnet restore -v Minimal
-  - dotnet build src/AspNetOptionsExplorer.csproj -c Release 
-  - dotnet test tests/AspNetOptionsExplorer.Tests.csproj
+  - dotnet build src/SodaPop.ConfigExplorer.csproj -c Release 
+  - dotnet test tests/SodaPop.ConfigExplorer.Tests.csproj

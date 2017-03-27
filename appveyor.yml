@@ -11,13 +11,13 @@ build:
 build_script:
 - dotnet restore -v Minimal
 - dotnet build -c %CONFIGURATION%
-- dotnet pack -c %CONFIGURATION% .\src\AspNetOptionsExplorer.csproj -o .\artifacts 
+- dotnet pack -c %CONFIGURATION% .\src\SodaPop.ConfigExplorer.csproj -o .\artifacts 
 artifacts:
 - path: .\src\artifacts\**\*.*
 before_test:
 #- cmd: choco install opencover.portable
 test_script:
-- dotnet test .\tests\AspNetOptionsExplorer.Tests.csproj
+- dotnet test .\tests\SodaPop.ConfigExplorer.Tests.csproj
 #- cmd: pushd
 #- cmd: cd .\tests\
 #- cmd: opencover.console -target:"dotnet.exe" -targetargs:"test -c %CONFIGURATION% --no-build" -register:user -filter:"+[*]* -[xunit*]*" -output:"../../coverage.xml" -log:All -oldstyle -skipautoprops
