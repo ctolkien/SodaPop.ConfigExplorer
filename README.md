@@ -54,11 +54,12 @@ var config = new ConfigurationBuilder()
     .AddJsonFile($"appsettings.{env.EnvironmentName}.json")
     .AddJsonFile("someotherappsetting.json", optional: true) 
     .AddInMemoryCollection()
+    .AddEnvironmentVariables()
     .Add(MyCustomSource)
     .Build();
 ```
 
-Depending on where you're running, what environment variables are set, which configuration options you're using, what _order_ the cofiguration items are added, which files are present or not present can result in you getting different configuration.
+Depending on where you're running, what environment variables are set on the current machine, which configuration options you're using, what _order_ the cofiguration items are added, which files are present or not present can result in you getting different configuration.
 
 Compounding this, there are a number of "magic" prefixes used to hook in for Azure integration.
 
