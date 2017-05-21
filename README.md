@@ -1,4 +1,4 @@
-# Config Explorer for ASPNet Core
+# Config Explorer for ASPNET Core
 
 | Platform | Status|
 |---------|-------|
