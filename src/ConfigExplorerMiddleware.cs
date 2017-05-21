@@ -11,26 +11,24 @@ namespace SodaPop.ConfigExplorer
     {
         private readonly IConfigurationRoot _config;
         private readonly ConfigExplorerOptions _explorerOptions;
+        private readonly RequestDelegate _next;
 
         public ConfigExplorerMiddleware(RequestDelegate next, IConfigurationRoot config, ConfigExplorerOptions explorerOptions)
         {
             _config = config;
             _explorerOptions = explorerOptions;
-
+            _next = next;
         }
 
         public async Task Invoke(HttpContext context)
         {
             var configs = CreateConfigurationList(_config.GetChildren()).ToList();
 
-
             var engine = EngineFactory.CreateEmbedded(typeof(ConfigExplorerMiddleware));
-
 
             var result = engine.Parse("Configs", configs);
 
             await context.Response.WriteAsync(result);
-
         }
 
         /// <summary>
@@ -58,6 +56,5 @@ namespace SodaPop.ConfigExplorer
                 yield return o;
             }
         }
-
     }
 }

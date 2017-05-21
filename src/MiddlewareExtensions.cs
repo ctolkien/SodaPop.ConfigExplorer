@@ -11,17 +11,10 @@ namespace SodaPop.ConfigExplorer
             IConfigurationRoot configRoot,
             ConfigExplorerOptions options = null)
         {
-
             options = options ?? new ConfigExplorerOptions();
 
-
-            return builder.MapWhen(context =>
-            {
-                return context.IsValid(options);
-            },
+            return builder.MapWhen(context => context.IsValid(options),
                 x => x.UseMiddleware<ConfigExplorerMiddleware>(configRoot, options));
-
-
         }
 
         //todo: make this less terribad
@@ -31,12 +24,10 @@ namespace SodaPop.ConfigExplorer
 
             if (options.LocalHostOnly && valid)
             {
-                valid = context.Request.Host.Host.Equals("localhost");
+                return context.Request.Host.Host.Equals("localhost");
             }
 
             return valid;
         }
-
-
     }
 }

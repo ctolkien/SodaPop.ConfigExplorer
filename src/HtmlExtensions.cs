@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Html;
 
 namespace SodaPop.ConfigExplorer
 {
-    public class HtmlExtensions
+    public static class HtmlExtensions
     {
         //Todo: don't do this...
         public static HtmlString RenderUls(IEnumerable<ConfigurationItem> configItems)
@@ -16,15 +16,14 @@ namespace SodaPop.ConfigExplorer
                 var item = iter.Current;
 
                 sb.AppendLine("<ul>");
-                sb.AppendLine($"<li>Path: {item.Path}</li>");
-                sb.AppendLine($"<li>Key: {item.Key}</li>");
+                sb.AppendLine($"<li><strong>Path:</strong> {item.Path}</li>");
+                sb.AppendLine($"<li><strong>Key:</strong> {item.Key}</li>");
                 if (!string.IsNullOrEmpty(item.Value))
                 {
-                    sb.AppendLine($"<li>Value: {item.Value}</li>");
+                    sb.AppendLine($"<li><strong>Value:</strong> {item.Value}</li>");
                 }
                 sb.Append($"{RenderUls(item.Children)}");
                 sb.AppendLine("</ul>");
-
             }
             return new HtmlString(sb.ToString());
         }
