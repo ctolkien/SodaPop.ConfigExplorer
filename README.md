@@ -12,7 +12,7 @@
 
 ### Nuget
 
-```Install-Package SodaPop.ConfigExplorer -pre```
+```Install-Package SodaPop.ConfigExplorer```
 
 ### dotnet CLI
 
