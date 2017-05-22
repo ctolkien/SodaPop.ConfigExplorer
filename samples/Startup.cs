@@ -8,6 +8,9 @@ namespace SodaPop.ConfigExplorer.Sample
 {
     public class Startup
     {
+
+        private const string DEFAULT_PATH = "/config";
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
@@ -24,12 +27,17 @@ namespace SodaPop.ConfigExplorer.Sample
                 app.UseConfigExplorer(config, new ConfigExplorerOptions //optional
                 {
                     LocalHostOnly = true, //default
-                    PathMatch = "/config", //default
+                    PathMatch = DEFAULT_PATH, //default
                     TryRedactConnectionStrings = true //default
                 });
             }
 
-            app.Run((context) => context.Response.WriteAsync("Hello Sample World!"));
+            app.Run((context) => context.Response.WriteAsync($"<!DOCTYPE html>" +
+                $"<html>" +
+                $"<body>" +
+                $"Browse to the demo here: <a href=\"{ DEFAULT_PATH }\">ASPNET Core Config Explorer</a>" +
+                $"</body>" +
+                $"</html>"));
         }
     }
 }

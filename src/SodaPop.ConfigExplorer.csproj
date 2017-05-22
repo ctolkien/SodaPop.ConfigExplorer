@@ -15,14 +15,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Layout.cshtml">
-      <CopyToOutputDirection>Always</CopyToOutputDirection>
-    </EmbeddedResource>
+    <EmbeddedResource CopyToOutputDirection="Always" Include="Layout.cshtml" />
     <EmbeddedResource CopyToOutputDirection="Always" Include="Configs.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore" Version="1.0.3" />
-    <PackageReference Include="RazorLight" Version="1.0.0-rc2" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.0.5" />
+    <PackageReference Include="RazorLight" Version="1.1.0" />
   </ItemGroup>
 
 </Project>
