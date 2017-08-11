@@ -47,7 +47,7 @@ namespace SodaPop.ConfigExplorer
                 if (_explorerOptions.TryRedactConnectionStrings)
                 {
                     //todo: especially this bit
-                    if (o.Path.Contains("Connection"))
+                    if (o.Path.Contains("ConnectionString", StringComparison.OrdinalIgnoreCase))
                     {
                         o.Value = "REDACTED";
                     }
