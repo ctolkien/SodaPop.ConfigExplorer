@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -47,7 +48,7 @@ namespace SodaPop.ConfigExplorer
                 if (_explorerOptions.TryRedactConnectionStrings)
                 {
                     //todo: especially this bit
-                    if (o.Path.Contains("Connection"))
+                    if (o.Path.IndexOf("ConnectionString", StringComparison.OrdinalIgnoreCase) > 0)
                     {
                         o.Value = "REDACTED";
                     }
