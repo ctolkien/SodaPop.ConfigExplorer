@@ -8,7 +8,6 @@ namespace SodaPop.ConfigExplorer.Sample
 {
     public class Startup
     {
-
         private const string DEFAULT_PATH = "/config";
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,11 +32,11 @@ namespace SodaPop.ConfigExplorer.Sample
             }
 
             app.Run((context) => context.Response.WriteAsync($"<!DOCTYPE html>" +
-                $"<html>" +
-                $"<body>" +
+                "<html>" +
+                "<body>" +
                 $"Browse to the demo here: <a href=\"{ DEFAULT_PATH }\">ASPNET Core Config Explorer</a>" +
-                $"</body>" +
-                $"</html>"));
+                "</body>" +
+                "</html>"));
         }
     }
 }

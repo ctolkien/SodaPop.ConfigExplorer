@@ -25,9 +25,12 @@ namespace SodaPop.ConfigExplorer
         {
             var configs = CreateConfigurationList(_config.GetChildren()).ToList();
 
-            var engine = EngineFactory.CreateEmbedded(typeof(ConfigExplorerMiddleware));
+            var engineBuilder = new RazorLightEngineBuilder()
+                .UseEmbeddedResourcesProject(typeof(ConfigExplorerMiddleware))
+                .UseMemoryCachingProvider()
+                .Build();
 
-            var result = engine.Parse("Configs", configs);
+            var result = await engineBuilder.CompileRenderAsync("Configs", configs);
 
             await context.Response.WriteAsync(result);
         }
