@@ -8,13 +8,13 @@ namespace SodaPop.ConfigExplorer
     {
         public static IApplicationBuilder UseConfigExplorer(
             this IApplicationBuilder builder,
-            IConfigurationRoot configRoot,
+            IConfiguration config,
             ConfigExplorerOptions options = null)
         {
             options = options ?? new ConfigExplorerOptions();
 
             return builder.MapWhen(context => context.IsValid(options),
-                x => x.UseMiddleware<ConfigExplorerMiddleware>(configRoot, options));
+                x => x.UseMiddleware<ConfigExplorerMiddleware>(config, options));
         }
 
         //todo: make this less terribad
