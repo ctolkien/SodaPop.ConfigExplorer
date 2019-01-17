@@ -8,12 +8,12 @@ using Xunit;
 
 namespace SodaPop.ConfigExplorer.Tests
 {
-    public class IntergrationTest
+    public class IntegrationTest
     {
         private readonly TestServer _server;
         private readonly HttpClient _client;
 
-        public IntergrationTest()
+        public IntegrationTest()
         {
             _server = new TestServer(new WebHostBuilder()
                 .UseStartup<Startup>());

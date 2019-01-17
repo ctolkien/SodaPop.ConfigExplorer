@@ -1,5 +1,7 @@
-﻿using System.IO;
+using System.Linq;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration.Json;
 
 namespace SodaPop.ConfigExplorer.Sample
 {
@@ -7,14 +9,20 @@ namespace SodaPop.ConfigExplorer.Sample
     {
         public static void Main(string[] args)
         {
-            var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
-                .UseStartup<Startup>()
-                .Build();
 
-            host.Run();
+            CreateWebHostBuilder(args).Build().Run();
         }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration(c =>
+                {
+                    // Remove non-JSON configuration sources
+                    foreach (var source in c.Sources.Where(s => !(s is JsonConfigurationSource)).ToArray())
+                    {
+                        c.Sources.Remove(source);
+                    }
+                })
+                .UseStartup<Startup>();
     }
 }
