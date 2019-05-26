@@ -1,12 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Chad Tolkien</Authors>
     <Company>Soda Digital</Company>
-    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionPrefix>2.0.0</VersionPrefix>
     <VersionSufix></VersionSufix>
-    <Description>Middleware for AspNet Core to diagnose what values are available from Configuration</Description>
+    <Description>Middleware for ASP.NET Core to diagnose what values are available from Configuration</Description>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/ctolkien/SodaPop.ConfigExplorer</RepositoryUrl>
     <PackageProjectUrl>https://github.com/ctolkien/SodaPop.ConfigExplorer</PackageProjectUrl>
@@ -15,14 +15,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Layout.cshtml">
-      <CopyToOutputDirection>Always</CopyToOutputDirection>
-    </EmbeddedResource>
+    <EmbeddedResource CopyToOutputDirection="Always" Include="Layout.cshtml" />
     <EmbeddedResource CopyToOutputDirection="Always" Include="Configs.cshtml" />
   </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore" Version="1.0.3" />
-    <PackageReference Include="RazorLight" Version="1.0.0-rc2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.1" />
+    <PackageReference Include="RazorLight" Version="2.0.0-beta1" />
   </ItemGroup>
 
 </Project>

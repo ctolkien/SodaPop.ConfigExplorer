@@ -1,35 +1,41 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SodaPop.ConfigExplorer.Sample
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        private const string DEFAULT_PATH = "/config";
+
+        public void ConfigureServices(IServiceCollection services)
+        { }
+
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IConfiguration config)
         {
-            var config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            loggerFactory.AddConsole();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
 
-                app.UseConfigExplorer(config, new ConfigExplorerOptions //optional
+                app.UseConfigExplorer(config, new ConfigExplorerOptions // optional
                 {
-                    LocalHostOnly = true, //default
-                    PathMatch = "/config", //default
-                    TryRedactConnectionStrings = true //default
+                    LocalHostOnly = true, // default
+                    PathMatch = DEFAULT_PATH, // default
+                    TryRedactConnectionStrings = true, // default
                 });
             }
 
-            app.Run((context) => context.Response.WriteAsync("Hello Sample World!"));
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("<!DOCTYPE html><html>" +
+                    "<head><title>SodaPop.ConfigExplorer.Sample</title></head>" +
+                    "<body>" +
+                    $"<p>Browse to the demo here: <a href=\"{DEFAULT_PATH}\">Show configuration</a></p>" +
+                    "</body>" +
+                    "</html>");
+            });
         }
     }
 }

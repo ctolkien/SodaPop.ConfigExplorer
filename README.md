@@ -1,4 +1,4 @@
-# Config Explorer for ASPNet Core
+# Config Explorer for ASPNET Core
 
 | Platform | Status|
 |---------|-------|
@@ -12,7 +12,7 @@
 
 ### Nuget
 
-```Install-Package SodaPop.ConfigExplorer -pre```
+```Install-Package SodaPop.ConfigExplorer```
 
 ### dotnet CLI
 
@@ -30,7 +30,7 @@ if (env.IsDevelopment)
 }
 ```
 
-Once configured, access a diagnostic listing all the available keys and values in the configuration system via:
+Once configured, access a diagnostic listing of all the available keys and values in the configuration system via:
 
 ```
 http://localhost:port/config
@@ -38,7 +38,7 @@ http://localhost:port/config
 
 ## A Strong Warning On Security
 
-Configuration can often contain application secrets such as connection strings. As a precuationary measure the end point will only load if the host is `localhost` and we will also filter out any configuration key which has a name containing `ConnectionString`. Even with these set, we strongly advise this middleware is only added in development environments.
+Configuration can often contain application secrets such as connection strings. As a precautionary measure the end point will only load if the host is `localhost` and we will also filter out any configuration key which has a name containing `ConnectionString`. Even with these set, we strongly advise this middleware is only added in development environments.
 
 ## Example
 
@@ -59,13 +59,13 @@ var config = new ConfigurationBuilder()
     .Build();
 ```
 
-Depending on where you're running, what environment variables are set on the current machine, which configuration options you're using, what _order_ the cofiguration items are added, which files are present or not present can result in you getting different configuration.
+Depending on where you're running, what environment variables are set on the current machine, which configuration options you're using, what _order_ the configuration items are added, which files are present or not present can result in you getting different configuration.
 
 Compounding this, there are a number of "magic" prefixes used to hook in for Azure integration.
 
-This tool will simply list out all the availble keys and values currently available in the entire configuration system.
+This tool will simply list out all the keys and values currently available in the entire configuration system.
 
-## Availble Options
+## Available Options
 
 ```csharp
 app.UseConfigExplorer(config, new ConfigExplorerOptions //optional

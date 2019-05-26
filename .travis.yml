@@ -5,8 +5,8 @@ notifications:
 env:
 - ASPNETCORE_ENVIRONMENT=Development
 mono: none
-dotnet: 1.0.1
+dotnet: 2.1.503
 script:
   - dotnet restore -v Minimal
-  - dotnet build src/SodaPop.ConfigExplorer.csproj -c Release 
+  - dotnet build src/SodaPop.ConfigExplorer.csproj -c Release
   - dotnet test tests/SodaPop.ConfigExplorer.Tests.csproj

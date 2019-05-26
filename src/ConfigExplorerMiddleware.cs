@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -9,11 +10,11 @@ namespace SodaPop.ConfigExplorer
 {
     public class ConfigExplorerMiddleware
     {
-        private readonly IConfigurationRoot _config;
+        private readonly IConfiguration _config;
         private readonly ConfigExplorerOptions _explorerOptions;
         private readonly RequestDelegate _next;
 
-        public ConfigExplorerMiddleware(RequestDelegate next, IConfigurationRoot config, ConfigExplorerOptions explorerOptions)
+        public ConfigExplorerMiddleware(RequestDelegate next, IConfiguration config, ConfigExplorerOptions explorerOptions)
         {
             _config = config;
             _explorerOptions = explorerOptions;
@@ -24,9 +25,11 @@ namespace SodaPop.ConfigExplorer
         {
             var configs = CreateConfigurationList(_config.GetChildren()).ToList();
 
-            var engine = EngineFactory.CreateEmbedded(typeof(ConfigExplorerMiddleware));
+            var engine = new RazorLightEngineBuilder()
+                .UseEmbeddedResourcesProject(typeof(ConfigExplorerMiddleware))
+                .Build();
 
-            var result = engine.Parse("Configs", configs);
+            var result = await engine.CompileRenderAsync("Configs", configs);
 
             await context.Response.WriteAsync(result);
         }
@@ -38,16 +41,13 @@ namespace SodaPop.ConfigExplorer
         /// <returns></returns>
         private IEnumerable<ConfigurationItem> CreateConfigurationList(IEnumerable<IConfigurationSection> config)
         {
-            //todo: make this less bad
-            var iter = config.GetEnumerator();
-            while (iter.MoveNext())
+            foreach (var c in config)
             {
-                var c = iter.Current;
                 var o = new ConfigurationItem { Path = c.Path, Key = c.Key, Value = c.Value };
                 if (_explorerOptions.TryRedactConnectionStrings)
                 {
-                    //todo: especially this bit
-                    if (o.Path.Contains("Connection"))
+                    //todo: make this less bad
+                    if (o.Path.IndexOf("ConnectionString", StringComparison.OrdinalIgnoreCase) > 0)
                     {
                         o.Value = "REDACTED";
                     }
