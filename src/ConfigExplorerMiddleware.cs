@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace SodaPop.ConfigExplorer
 {
@@ -13,15 +14,21 @@ namespace SodaPop.ConfigExplorer
         private readonly ConfigExplorerOptions _explorerOptions;
         private readonly RequestDelegate _next;
 
-        public ConfigExplorerMiddleware(RequestDelegate next, IConfiguration config, ConfigExplorerOptions explorerOptions)
+        public ConfigExplorerMiddleware(RequestDelegate next, IConfiguration config, IOptions<ConfigExplorerOptions> explorerOptions)
         {
             _config = config;
-            _explorerOptions = explorerOptions;
+            _explorerOptions = explorerOptions.Value;
             _next = next;
         }
 
         public async Task Invoke(HttpContext context)
         {
+            if (!IsValid(context))
+            {
+                await _next(context);
+                return;
+            }
+
             var configs = CreateConfigurationList(_config.GetChildren()).ToList();
 
             // render configuration
@@ -49,6 +56,22 @@ namespace SodaPop.ConfigExplorer
                 o.Children = CreateConfigurationList(c.GetChildren());
                 yield return o;
             }
+        }
+
+        /// <summary>
+        /// Determine whether the request is a valid config explorer request.
+        /// </summary>
+        /// <param name="context">HTTP context.</param>
+        /// <returns>Whether the request is valid.</returns>
+        private bool IsValid(HttpContext context)
+        {
+            if (!context.Request.Path.Equals(_explorerOptions.PathMatch))
+                return false;
+
+            if (_explorerOptions.LocalHostOnly && !context.Request.Host.Host.Equals("localhost"))
+                return false;
+
+            return true;
         }
 
         /// <summary>
