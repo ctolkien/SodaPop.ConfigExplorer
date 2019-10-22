@@ -1,36 +1,32 @@
-using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using SodaPop.ConfigExplorer.Sample;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
 using Xunit;
+using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace SodaPop.ConfigExplorer.Tests
 {
-    public class IntegrationTest
+    public class IntegrationTest : IClassFixture<WebApplicationFactory<Startup>>
     {
-        private readonly TestServer _server;
-        private readonly HttpClient _client;
+        private readonly WebApplicationFactory<Startup> _factory;
 
-        public IntegrationTest()
+        public IntegrationTest(WebApplicationFactory<Startup> factory)
         {
-            _server = new TestServer(new WebHostBuilder()
-                .UseStartup<Startup>());
-            _client = _server.CreateClient();
+            _factory = factory;
         }
 
-        [Fact(Skip ="These crash with RazorLight")]
+        [Fact]
         public async Task ConfirmCanGetResponseFromOptions()
         {
-            var response = await _client.GetAsync("/config");
+            var client = _factory.CreateClient();
+
+            var response = await client.GetAsync("/config");
+
             response.EnsureSuccessStatusCode();
 
-            //var responseString = await response.Content.ReadAsStringAsync();
+            var responseString = await response.Content.ReadAsStringAsync();
 
-            //// Assert
-            //Assert.Equal($"Key: 'Tier1:Tier2:Tier3:Level3Option', Value: 'And it's value' {Environment.NewLine}Key: 'Tier1:SomeKey', Value: 'Some Value' {Environment.NewLine}",
-            //    responseString);
+            // Assert
+            Assert.Contains("Tier1:Tier2:Tier3:Level3Option", responseString);
         }
     }
 }
