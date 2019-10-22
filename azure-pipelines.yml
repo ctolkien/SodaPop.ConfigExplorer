@@ -37,17 +37,19 @@ stages:
             displayName: "Test"
             inputs:
               command: test
-              arguments: --collect "Code Coverage"
+              arguments: '-c $(buildConfiguration) --collect "Code Coverage"'
           - task: DotNetCoreCLI@2
             displayName: "Pack Nuget"
             inputs:
-              command: pack                
+              command: pack
               arguments: '-c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)'
           - task: PublishBuildArtifacts@1
             inputs:
               pathtoPublish: '$(Build.ArtifactStagingDirectory)'
               artifactName: drop
   - stage: Deploy
+    dependsOn: Build
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/release'))
     jobs:
       - deployment: 
         strategy:
@@ -57,6 +59,7 @@ stages:
                 - task: NuGetCommand@2
                   displayName: 'NuGet push'
                   inputs:
-                    command: push
-                    publishVstsFeed: 'replace'
-                    allowPackageConflicts: true
+                    command: 'push'
+                    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+                    nuGetFeedType: 'external'
+                    publishFeedCredentials: 'Nuget.Org'
