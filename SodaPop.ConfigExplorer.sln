@@ -6,7 +6,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SodaPop.ConfigExplorer", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SodaPop.ConfigExplorer.Tests", "tests\SodaPop.ConfigExplorer.Tests.csproj", "{AA8CF925-9336-49DD-9B1A-0243C7DA51E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SodaPop.ConfigExplorer.Sample", "samples\SodaPop.ConfigExplorer.Sample.csproj", "{DF570E5D-20D7-4AAC-95E8-964F57841563}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{5FC26862-C432-41C1-AC64-8F688744DC78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SodaPop.ConfigExplorer.Sample2.1", "samples\Sample2.1\SodaPop.ConfigExplorer.Sample2.1.csproj", "{DF570E5D-20D7-4AAC-95E8-964F57841563}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SodaPop.ConfigExplorer.Sample3.0", "samples\Sample3.0\SodaPop.ConfigExplorer.Sample3.0.csproj", "{86760FC5-87B2-48CC-BC62-374DFA20BA3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,8 +58,24 @@ Global
 		{DF570E5D-20D7-4AAC-95E8-964F57841563}.Release|x64.Build.0 = Release|Any CPU
 		{DF570E5D-20D7-4AAC-95E8-964F57841563}.Release|x86.ActiveCfg = Release|Any CPU
 		{DF570E5D-20D7-4AAC-95E8-964F57841563}.Release|x86.Build.0 = Release|Any CPU
+		{86760FC5-87B2-48CC-BC62-374DFA20BA3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86760FC5-87B2-48CC-BC62-374DFA20BA3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86760FC5-87B2-48CC-BC62-374DFA20BA3A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{86760FC5-87B2-48CC-BC62-374DFA20BA3A}.Debug|x64.Build.0 = Debug|Any CPU
+		{86760FC5-87B2-48CC-BC62-374DFA20BA3A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{86760FC5-87B2-48CC-BC62-374DFA20BA3A}.Debug|x86.Build.0 = Debug|Any CPU
+		{86760FC5-87B2-48CC-BC62-374DFA20BA3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86760FC5-87B2-48CC-BC62-374DFA20BA3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86760FC5-87B2-48CC-BC62-374DFA20BA3A}.Release|x64.ActiveCfg = Release|Any CPU
+		{86760FC5-87B2-48CC-BC62-374DFA20BA3A}.Release|x64.Build.0 = Release|Any CPU
+		{86760FC5-87B2-48CC-BC62-374DFA20BA3A}.Release|x86.ActiveCfg = Release|Any CPU
+		{86760FC5-87B2-48CC-BC62-374DFA20BA3A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DF570E5D-20D7-4AAC-95E8-964F57841563} = {5FC26862-C432-41C1-AC64-8F688744DC78}
+		{86760FC5-87B2-48CC-BC62-374DFA20BA3A} = {5FC26862-C432-41C1-AC64-8F688744DC78}
 	EndGlobalSection
 EndGlobal

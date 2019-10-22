@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\samples\SodaPop.ConfigExplorer.Sample.csproj" />
+    <ProjectReference Include="..\samples\Sample2.1\SodaPop.ConfigExplorer.Sample2.1.csproj" />
   </ItemGroup>
 
 </Project>
