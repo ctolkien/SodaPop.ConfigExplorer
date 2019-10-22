@@ -24,10 +24,9 @@ stages:
           vmImage: $(vmImage)
         steps:
           - task: UseDotNet@2
-            displayName: "Install and setup the version of SDK in global.json"
+            displayName: "Install and setup the dotnet SDK"
             inputs:
-              packageType: 'sdk'
-              useGlobalJson: true
+              version: 3.0.x
           - task: DotNetCoreCLI@2
             displayName: "Build Solution"
             inputs:
