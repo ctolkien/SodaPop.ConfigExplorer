@@ -52,8 +52,7 @@ stages:
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/release'))
     jobs:
       - deployment: 
-        pool:
-          vmImage: 'ubuntu-latest'
+        environment: Nuget
         strategy:
             runOnce:
               deploy:
