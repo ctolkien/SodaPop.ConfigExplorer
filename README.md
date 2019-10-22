@@ -1,9 +1,6 @@
 # Config Explorer for ASPNET Core
 
-| Platform | Status|
-|---------|-------|
-|Windows  | [![Build status](https://img.shields.io/appveyor/ci/Soda-Digital/SodaPop-ConfigExplorer.svg?maxAge=200)](https://ci.appveyor.com/project/Soda-Digital/SodaPop.ConfigExplorer) |
-|Linux | [![Build Status](https://img.shields.io/travis/ctolkien/SodaPop.ConfigExplorer.svg?maxAge=200)](https://travis-ci.org/ctolkien/SodaPop.ConfigExplorer) |
+[![Build Status](https://dev.azure.com/chadtolkien/SodaPop.ConfigExplorer/_apis/build/status/SodaPop.ConfigExplorer?branchName=master)](https://dev.azure.com/chadtolkien/SodaPop.ConfigExplorer/_build/latest?definitionId=5&branchName=master)
 
 ![Version](https://img.shields.io/nuget/v/SodaPop.ConfigExplorer.svg?maxAge=200)
 ![license](https://img.shields.io/github/license/ctolkien/SodaPop.ConfigExplorer.svg?maxAge=2592000)
@@ -19,7 +16,15 @@
 `dotnet add package SodaPop.ConfigExplorer`
 
 
-## Configuration
+## Getting Started
+
+In your `ConfigureServices` method:
+
+```csharp
+services.AddConfigExplorer();
+```
+
+In your `Configure` method:
 
 ```csharp
 

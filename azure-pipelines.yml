@@ -10,40 +10,53 @@ variables:
 stages:
   - stage: Build
     jobs:
-        - job:
-          displayName: "Building and Test"
-          strategy:
-            matrix:
-              Windows:
-                vmImage: 'windows-latest'
-              Ubuntu:
-                vmImage: 'ubuntu-latest'
-              Mac:
-                vmImage: 'macOS-latest'
-          pool:
-            vmImage: $(vmImage)
-          steps:
-            - task: UseDotNet@2
-              displayName: "Install and setup the version of SDK in global.json"
-              inputs:
-                packageType: 'sdk'
-                useGlobalJson: true
-            - task: DotNetCoreCLI@2
-              displayName: "Build Solution"
-              inputs:
-                command: build
-                arguments: '-c $(buildConfiguration)'
-            - task: DotNetCoreCLI@2
-              displayName: "Test"
-              inputs:
-                command: test
-                arguments: --collect "Code Coverage"
-            - task: DotNetCoreCLI@2
-              displayName: "Pack Nuget"
-              inputs:
-                command: pack                
-                arguments: '-c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)'
-            - task: PublishBuildArtifacts@1
-              inputs:
-                pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-                artifactName: drop
+      - job:
+        displayName: "Building and Test"
+        strategy:
+          matrix:
+            Windows:
+              vmImage: 'windows-latest'
+            Ubuntu:
+              vmImage: 'ubuntu-latest'
+            Mac:
+              vmImage: 'macOS-latest'
+        pool:
+          vmImage: $(vmImage)
+        steps:
+          - task: UseDotNet@2
+            displayName: "Install and setup the version of SDK in global.json"
+            inputs:
+              packageType: 'sdk'
+              useGlobalJson: true
+          - task: DotNetCoreCLI@2
+            displayName: "Build Solution"
+            inputs:
+              command: build
+              arguments: '-c $(buildConfiguration)'
+          - task: DotNetCoreCLI@2
+            displayName: "Test"
+            inputs:
+              command: test
+              arguments: --collect "Code Coverage"
+          - task: DotNetCoreCLI@2
+            displayName: "Pack Nuget"
+            inputs:
+              command: pack                
+              arguments: '-c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)'
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              artifactName: drop
+  - stage: Deploy
+    jobs:
+      - deployment: 
+        strategy:
+            runOnce:
+              deploy:
+                steps:
+                - task: NuGetCommand@2
+                  displayName: 'NuGet push'
+                  inputs:
+                    command: push
+                    publishVstsFeed: 'replace'
+                    allowPackageConflicts: true
