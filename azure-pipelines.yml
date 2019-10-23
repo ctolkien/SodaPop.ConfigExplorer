@@ -60,6 +60,6 @@ stages:
                   displayName: 'NuGet push'
                   inputs:
                     command: 'push'
-                    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+                    packagesToPush: '/**/*.nupkg'
                     nuGetFeedType: 'external'
                     publishFeedCredentials: 'Nuget.Org'
