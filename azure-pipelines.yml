@@ -56,6 +56,6 @@ stages:
                   displayName: 'NuGet push'
                   inputs:
                     command: 'push'
-                    packagesToPush: '**/*.nupkg'
+                    packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;'
                     nuGetFeedType: 'external'
                     publishFeedCredentials: 'Nuget.Org'
