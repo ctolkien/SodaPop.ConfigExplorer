@@ -4,7 +4,7 @@
     <TargetFrameworks>netcoreapp3.1;netstandard2.0</TargetFrameworks>
     <Authors>Chad Tolkien</Authors>
     <Company>Soda Digital</Company>
-    <VersionPrefix>3.1.0</VersionPrefix>
+    <VersionPrefix>3.1.1</VersionPrefix>
     <VersionSufix></VersionSufix>
     <Description>Middleware for ASP.NET Core to diagnose what values are available from Configuration</Description>
     <RepositoryType>git</RepositoryType>
@@ -15,8 +15,13 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
+  <!-- Deterministic builds -->
+  <PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
