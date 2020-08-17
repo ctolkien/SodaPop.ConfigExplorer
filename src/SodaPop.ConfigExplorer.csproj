@@ -12,11 +12,21 @@
     <PackageProjectUrl>https://github.com/ctolkien/SodaPop.ConfigExplorer</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/ctolkien/SodaPop.ConfigExplorer/blob/master/LICENSE</PackageLicenseUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/ctolkien/SodaPop.ConfigExplorer/master/icon.png</PackageIconUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
+   
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+  
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
