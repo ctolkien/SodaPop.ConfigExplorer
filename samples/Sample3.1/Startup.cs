@@ -9,10 +9,7 @@ namespace SodaPop.ConfigExplorer.Sample
 {
     public class Startup
     {
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddConfigExplorer();
-        }
+        public void ConfigureServices(IServiceCollection services) => services.AddConfigExplorer();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IConfiguration config)
         {
