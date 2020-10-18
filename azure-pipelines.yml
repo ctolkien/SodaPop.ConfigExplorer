@@ -23,6 +23,7 @@ stages:
             displayName: "Install SDK v5.0"
             inputs:
               version: 5.0.x
+              includePreviewVersions: true
           - task: DotNetCoreCLI@2
             displayName: "Build Solution"
             inputs:
