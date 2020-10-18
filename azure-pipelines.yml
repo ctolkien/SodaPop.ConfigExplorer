@@ -28,7 +28,6 @@ stages:
             displayName: "Install runtime v3.1"
             inputs:
               version: 3.1.x
-              packageType: runtime
           - task: DotNetCoreCLI@2
             displayName: "Build Solution"
             inputs:
