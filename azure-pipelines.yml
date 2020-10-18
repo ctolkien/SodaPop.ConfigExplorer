@@ -33,12 +33,12 @@ stages:
             displayName: "Test"
             inputs:
               command: test
-              arguments: '-c $(buildConfiguration) --collect "Code Coverage"'
+              arguments: '--no-build -c $(buildConfiguration) --collect "Code Coverage"'
           - task: DotNetCoreCLI@2
             displayName: "Pack Nuget"
             inputs:
               command: pack
-              arguments: '-c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)'
+              arguments: '--no-build -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)'
           - task: PublishBuildArtifacts@1
             inputs:
               pathtoPublish: '$(Build.ArtifactStagingDirectory)'
