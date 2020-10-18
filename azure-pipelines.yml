@@ -20,9 +20,9 @@ stages:
           vmImage: $(vmImage)
         steps:
           - task: UseDotNet@2
-            displayName: "Install SDK v3.1"
+            displayName: "Install SDK v5.0"
             inputs:
-              version: 3.1.x
+              version: 5.0.x
           - task: DotNetCoreCLI@2
             displayName: "Build Solution"
             inputs:
@@ -46,7 +46,7 @@ stages:
     dependsOn: Build
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/release'))
     jobs:
-      - deployment: 
+      - deployment:
         environment: Nuget
         strategy:
             runOnce:

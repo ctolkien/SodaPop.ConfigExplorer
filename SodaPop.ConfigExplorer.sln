@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SodaPop.ConfigExplorer.Samp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SodaPop.ConfigExplorer.Sample3.1", "samples\Sample3.1\SodaPop.ConfigExplorer.Sample3.1.csproj", "{669FC956-EBD4-4E18-A05E-EE3E68742D73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SodaPop.ConfigExplorer.Sample5.0", "samples\Sample5.0\SodaPop.ConfigExplorer.Sample5.0.csproj", "{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,18 @@ Global
 		{669FC956-EBD4-4E18-A05E-EE3E68742D73}.Release|x64.Build.0 = Release|Any CPU
 		{669FC956-EBD4-4E18-A05E-EE3E68742D73}.Release|x86.ActiveCfg = Release|Any CPU
 		{669FC956-EBD4-4E18-A05E-EE3E68742D73}.Release|x86.Build.0 = Release|Any CPU
+		{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF}.Debug|x64.Build.0 = Debug|Any CPU
+		{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF}.Debug|x86.Build.0 = Debug|Any CPU
+		{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF}.Release|x64.ActiveCfg = Release|Any CPU
+		{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF}.Release|x64.Build.0 = Release|Any CPU
+		{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF}.Release|x86.ActiveCfg = Release|Any CPU
+		{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +91,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{95975569-A42B-4375-A604-2A30A7029DE8} = {5FC26862-C432-41C1-AC64-8F688744DC78}
 		{669FC956-EBD4-4E18-A05E-EE3E68742D73} = {5FC26862-C432-41C1-AC64-8F688744DC78}
+		{6BBD074B-808F-422C-AC02-ABCE3E0DC6FF} = {5FC26862-C432-41C1-AC64-8F688744DC78}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7ED284E2-60E6-42EB-8FBC-036443C2B2B1}
