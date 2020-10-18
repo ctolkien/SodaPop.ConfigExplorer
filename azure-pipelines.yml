@@ -24,6 +24,11 @@ stages:
             inputs:
               version: 5.0.x
               includePreviewVersions: true
+          - task: UseDotNet@2
+            displayName: "Install runtime v3.1"
+            inputs:
+              version: 3.1.x
+              packageType: runtime
           - task: DotNetCoreCLI@2
             displayName: "Build Solution"
             inputs:
