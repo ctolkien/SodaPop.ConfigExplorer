@@ -20,7 +20,12 @@ stages:
           vmImage: $(vmImage)
         steps:
           - task: UseDotNet@2
-            displayName: "Install SDK v3.1"
+            displayName: "Install SDK v5.0"
+            inputs:
+              version: 5.0.x
+              includePreviewVersions: true
+          - task: UseDotNet@2
+            displayName: "Install runtime v3.1"
             inputs:
               version: 3.1.x
           - task: DotNetCoreCLI@2
@@ -32,12 +37,12 @@ stages:
             displayName: "Test"
             inputs:
               command: test
-              arguments: '-c $(buildConfiguration) --collect "Code Coverage"'
+              arguments: '--no-build -c $(buildConfiguration) --collect "Code Coverage"'
           - task: DotNetCoreCLI@2
             displayName: "Pack Nuget"
             inputs:
               command: pack
-              arguments: '-c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)'
+              arguments: '--no-build -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)'
           - task: PublishBuildArtifacts@1
             inputs:
               pathtoPublish: '$(Build.ArtifactStagingDirectory)'
@@ -46,7 +51,7 @@ stages:
     dependsOn: Build
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/release'))
     jobs:
-      - deployment: 
+      - deployment:
         environment: Nuget
         strategy:
             runOnce:
