@@ -1,10 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 
 namespace SodaPop.ConfigExplorer
 {
@@ -93,7 +86,6 @@ namespace SodaPop.ConfigExplorer
             await RenderItemsAsync(configuration);
 
             await response.WriteAsync("\n</body>\n</html>\n");
-
 
             async Task RenderItemsAsync(IEnumerable<ConfigurationItem> items)
             {

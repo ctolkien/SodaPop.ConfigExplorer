@@ -1,9 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-
+﻿
 namespace SodaPop.ConfigExplorer
 {
     public static class ConfigExplorerExtensions
